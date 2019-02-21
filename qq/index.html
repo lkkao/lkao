@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>qq</title>
+    <link rel="stylesheet" type="text/css" href="./static/common.css"/>
+    <link rel="stylesheet" type="text/css" href="static/font_1022117_x8uoiwvzb9p/iconfont.css"/>
+  </head>
+  <body>
+  
+  	
+   <div id="app">
+   	 <!--脚步组件-->
+   		<nav-com></nav-com>
+	   			<transition :enter-active-class="transitionName" >
+	   				<!--<keep-alive 缓存组件 -->
+	   					<keep-alive>
+	   								<router-view :mmm="transitionName"  v-if="$route.meta.keep_alive"  />
+	   					</keep-alive>
+	   			</transition>
+   			<!--不需要缓存的组件-->
+   					<transition :enter-active-class="transitionName" >
+   							<router-view :mmm="transitionName" v-if="!$route.meta.keep_alive" />
+   					</transition>
+   		
+   </div>
+  
+  </body>
+  <script type="text/javascript">
+  		//build  --webpack一些配置 --包括入口文件、插件、loader、热更新
+  		//config --打开index.js 找到“proxyTable“这个属性，然后在里面加上对应的后台地址即可
+//			 npm install vue-router  --save (-S)     ---运行模式
+//			 npm install vue-router  --save--dev(-D) ---开发模式
+  		//	4.static 文件夹：
+//			存放的文件不会经过webpack处理，可以直接引用，例如swf文件如果要引用可以在webpack配置对swf后缀名的文件处理的loader，也可以直接将swf文件放在这个文件夹引用	
+//	5.package.json:  npm install 安装所有依赖
+//	  	dependencies--  运行依赖
+//	  	devDependencies --开发依赖
+		
+//		6.src--整个项目不超50M
+//				“assets”: 共用的样式、图片
+//				“components”:  业务代码存放的地方，里面分成一个个组件存放，一个页面是一个组件，一个页面里面还会包着很多组件
+//				“router”: 设置路由
+//				“App.vue”: vue文件入口界面
+//				“main.js：对应App.vue 创建vue实例，也是入口文件，对应webpack.base.config.js里的入口配置
+
+// 1。  rem适配
+
+//		(function(doc,win){  
+//		     var docEl =doc.documentElement,  
+//		             resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',  
+//		             recalc = function(){  
+//		                 var clientWidth = docEl.clientWidth>750 ? 750 :docEl.clientWidth;  
+//		                 if (!clientWidth) {return};  
+//		                 docEl.style.fontSize =  clientWidth/7.5 + 'px';  
+//		             };  
+//		     recalc();  
+//		     if (!doc.addEventListener) return;  
+//		     win.addEventListener(resizeEvt, recalc, false);  
+//		     //DOMContentLoaded---dom加载完成事件
+//		     doc.addEventListener('DOMContentLoaded', recalc, false);  
+//		 })(document,window)  
+					
+//			2.			flexible.js插件
+					//安装  
+//						1.  npm i lib-flexible --save
+//						2.  在main.js  中引入 import 'lib-flexible'
+//								1rem=50px
+		
+
+
+								
+					//安装 px2rem-loader--px转成rem
+				
+//							1、npm install px2rem-loader --save
+
+//             2.bulid utils
+//							  //px转rem的loader
+//								 var px2remLoader = {
+//								    loader: 'px2rem-loader',
+//								    options: {
+//								      remUnit: 75
+//								    }
+//								  }
+							//font-size使用2倍的px
+
+//						function generateLoaders (loader, loaderOptions) {
+//						//  const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
+//						    const loaders = [cssLoader,px2remLoader];
+//						    
+//						    
+//						    if (loader) {
+//						      loaders.push({
+//						        loader: loader + '-loader',
+//						        options: Object.assign({}, loaderOptions, {
+//						          sourceMap: options.sourceMap
+//						        })
+//						      })
+//						    }
+					
+  </script>
+  
+</html>

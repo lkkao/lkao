@@ -1,0 +1,87 @@
+//1.创建变量
+ @width:100%;
+ @height: 100px;
+ @color:blue;
+ @Wrap: wrap;
+ //混合方法
+ .border(@a:10px,@b:50px,@c:30px,@color:#000){
+          border:solid 1px @color;
+//        box-shadow：x轴 y轴 模糊距离 模糊度  颜色;
+//        box-shadow: @arguments;//指代的是 全部参数、
+           box-shadow: @a @b @c @color;
+  }
+  //if语句
+ .mixin (@a) when (@a >= 100px) {
+    width: @a;
+}
+  //方法可以用来兼容
+  .box-radius(@a:10px){
+   
+        -webkit-border-radius:@a ;
+        -moz-border-radius:@a;
+        -ms-border-radius:@a;
+        border-radius:@a;
+  }
+ //2.嵌套写法
+ #box{
+     width:@width ;
+     height: @height;
+     background:@color ;
+       ul{
+           width: @width;
+           height: 60px;
+           background:red ;
+           li{
+               float: left;
+               margin-left: 50px;
+               list-style: none;
+               //用&:  设置伪类和子元素
+                &:nth-child(2){
+                       width: 100px;
+                       height: 60px;
+                       background: yellow;
+               
+                 }
+                &:after{
+                    content: "|";
+                } 
+           }
+          
+           
+       }
+       .list{
+           width: @width;
+           height: @height;
+           background: green;
+       }
+        
+ }
+ @myWidth:800px;
+ @Mycolor:#222;
+#@{Wrap}{
+    .card{
+        width: 300px;
+        height: 100px;
+        background: red;
+        font-size: 30px;
+        border-bottom:1px solid red;
+    }
+    .two{
+        .card;
+        background: blue;
+    }
+    .three{
+        .card;
+//       .border();//不传参 使用默认值 
+        .border(20px,20px,10px,#00F);
+        .box-radius(30px)
+    }
+    .four{
+        .card;
+         .mixin(50px)
+    }
+    width:@myWidth - 30;
+    height: 300px;
+    background: @Mycolor*3;
+    
+}

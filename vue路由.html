@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h1>主页</h1>
+			<!--router-link vue-router 提供的跳转方式 渲染完是a标签-->
+			<router-link to="/login">登录</router-link>
+			<router-link to="/reg">注册</router-link>
+			<!--router-view --路由的切换组件 router-view中完成 -->
+			<router-view></router-view>
+		
+		</div>
+		
+		
+		<template id="login">
+			<div>
+				<h1>登录组件</h1>
+				用户名：<input type="text" name="" id="" value="" />
+				<br />
+				密码：<input type="text" name="" id="" value="" />
+				<br />
+				<button>登录</button>
+			</div>
+		</template>
+			<template id="reg">
+			<div>
+				<h1>注册组件</h1>
+				用户名：<input type="text" name="" id="" value="" />
+				<br />
+				密码：<input type="text" name="" id="" value="" />
+				<br />
+				<button>注册</button>
+			</div>
+		</template>
+	</body>
+	<script type="text/javascript">
+//		电脑和手机在一个ip
+		
+//				
+		
+		
+		
+		
+		
+		
+		
+	</script>
+	<!--vue-router 路由-->
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="vue-router.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+//		路由控制组件切换  页面跳转
+
+//		1.准备好组件
+		//登录组件
+		var Login=Vue.component("loginCom",{
+			template:"#login",
+			data(){
+				return{
+					
+				}
+			}
+		})
+		//注册组件
+		var Reg=Vue.component("regCom",{
+			template:"#reg",
+			data(){
+				return{
+					
+				}
+			}
+		})
+		//2.把组件配置到路由
+		var routes=[
+			//每一个路径
+				{path:"/login",component:Login},
+				{path:"/reg",component:Reg}
+		]
+		//3.创建路由 把配置放在路由
+//		var  x=8;
+//		var obj={
+////			x:x
+//			x,
+//			y:9
+//		}
+
+		var router=new VueRouter({
+			//es6 语法  对象的key和value的变量相同时候  可以省略
+//			routes:routes
+			routes
+		})
+		//4 把路由挂在到实例
+		
+		
+		var vm=new Vue({
+			el:"#app",
+			data(){
+				return{
+					
+				}
+			},
+			//路由的使用
+			router,
+			methods:{
+				
+			}	
+		})
+		
+		
+		
+		
+		
+		
+	</script>
+</html>
